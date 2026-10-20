@@ -167,7 +167,7 @@ func NewRunner(r io.Reader, out, stdout io.Writer) *Runner {
 // had no handling for malformed records at all; failing loudly is the
 // safe default — review whether skipping bad lines is preferred.
 func (r *Runner) Run(ctx context.Context) (int, error) {
-	scanner := bufio.NewScanner(r)
+	scanner := bufio.NewScanner(r.Input)
 	w := bufio.NewWriter(r.Output)
 	defer w.Flush()
 
